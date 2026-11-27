@@ -1,0 +1,11 @@
+/* Agent faces are flat and evenly lit: a bright shell in the agent's own colour,
+   eyes in the deep tone of the same pair. Light themes take the shell a step
+   deeper so it holds its edge on a pale page. */
+[data-agent-orb] .ao-body{fill:var(--ao-shell)}
+[data-agent-orb] .ao-eye{fill:var(--ao-tint)}
+:is([data-theme="light"],[data-theme="warm"],[data-theme="mist"],[data-theme="sand"]) [data-agent-orb] .ao-body{fill:color-mix(in srgb,var(--ao-shell) 86%,#1a1208)}
+
+/* A working or thinking agent's status light breathes; the rest hold still. */
+@keyframes agentLight{0%,100%{opacity:1}50%{opacity:.42}}
+[data-agent-light="live"]{animation:agentLight 2.4s cubic-bezier(.45,0,.55,1) infinite}
+@media (prefers-reduced-motion:reduce){[data-agent-light]{animation:none !important}}
