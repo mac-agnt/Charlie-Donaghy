@@ -10,15 +10,21 @@ import RecordsFiles from "./pages/RecordsFiles";
 import RecordsOntology from "./pages/RecordsOntology";
 import Activity from "./pages/Activity";
 import Settings from "./pages/Settings";
-import Dashboard from "./pages/Dashboard";
+import SettingsFM from "../fm/pages/SettingsFM";
+import FMDashboard from "../fm/pages/Dashboard";
 import Agents from "./pages/Agents";
-import AgentsApprovals from "./pages/AgentsApprovals";
+import AgentsFM from "../fm/pages/AgentsFM";
 import HeliosMini from "./overlays/HeliosMini";
 import WorkViewer from "./overlays/WorkViewer";
 import AgentStudio from "./overlays/AgentStudio";
 import NewRecordDialog from "./overlays/NewRecordDialog";
 import CommandPalette from "./overlays/CommandPalette";
 import BackgroundGallery from "./overlays/BackgroundGallery";
+import FMLayer from "../fm/FMLayer";
+import FMPage from "../fm/FMPage";
+import ErrorBoundary from "../fm/ErrorBoundary";
+import RecordsFM from "../fm/pages/RecordsFM";
+import { RoleSwitcher } from "../fm/pages/SettingsFM";
 
 type Props = { v: any };
 
@@ -33,14 +39,14 @@ export default function AppShell({ v }: Props) {
         <span style={css(v.railThumbStyle)} />
         <div style={css(cat(v.railRowStyle, "margin-bottom:22px"))}>
           <button className={cx("ix0", "ix1")} onClick={v.toggleRail} title={v.railLabel} style={{"width":"36px","height":"36px","flex":"none","border":"0","borderRadius":"var(--cta-r,11px)","background":"var(--accent-fill,var(--accent))","color":"var(--on-accent)","boxShadow":"var(--accent-glow,none)","cursor":"pointer","display":"flex","alignItems":"center","justifyContent":"center","fontSize":"13px","fontWeight":"600","padding":"0","transition":"transform .2s var(--ease)"}}>
-            {"K"}
+            {"D"}
           </button>
           <span style={css(v.brandStyle)}>
             <span style={{"display":"block","fontSize":"15px","fontWeight":"600","letterSpacing":"-.3px","color":"var(--ink)"}}>
-              {"Kilbride Group"}
+              {v.brandName}
             </span>
             <span style={{"display":"block","marginTop":"2px","fontSize":"9px","fontWeight":"500","letterSpacing":".16em","color":"var(--accent)"}}>
-              {"PULSE · OPERATIONS"}
+              {"PULSE · FACILITIES OS"}
             </span>
           </span>
           {v.railOpen && (
@@ -57,7 +63,11 @@ export default function AppShell({ v }: Props) {
           <Fragment key={i0}>
             {item?.isDivider && (
               <>
-                <div style={{"width":"20px","height":"1px","background":"var(--track)","margin":"7px 0"}} />
+                {item?.group ? (
+                  <div style={{"fontFamily":"var(--mono)","fontSize":"9px","letterSpacing":".14em","color":"var(--faint)","padding":"12px 14px 4px","textTransform":"uppercase"}}>{item.group}</div>
+                ) : (
+                  <div style={{"width":"20px","height":"1px","background":"var(--track)","margin":"7px 0"}} />
+                )}
               </>
             )}
             {item?.isItem && (
@@ -97,16 +107,20 @@ export default function AppShell({ v }: Props) {
               </div>
               <div style={{"display":"flex","alignItems":"center","gap":"11px","marginTop":"12px"}}>
                 <div style={{"width":"40px","height":"40px","flex":"none","borderRadius":"999px","background":"var(--accent-soft)","color":"var(--accent)","display":"flex","alignItems":"center","justifyContent":"center","fontSize":"13px","fontWeight":"600"}}>
-                  {"MK"}
+                  {v.meInitials}
                 </div>
                 <div style={{"minWidth":"0"}}>
                   <div style={{"fontSize":"17px","fontWeight":"600","letterSpacing":"-.3px","color":"var(--ink)","whiteSpace":"nowrap","overflow":"hidden","textOverflow":"ellipsis"}}>
-                    {"Martin Kilbride"}
+                    {v.meName}
                   </div>
                   <div style={{"fontSize":"12.5px","color":"var(--faint)","marginTop":"2px","whiteSpace":"nowrap","overflow":"hidden","textOverflow":"ellipsis"}}>
-                    {"Kilbride Group · Owner"}
+                    {v.meSub}
                   </div>
                 </div>
+              </div>
+              <div style={{"marginTop":"12px"}}>
+                <div style={{"fontSize":"10px","fontWeight":"600","letterSpacing":".12em","color":"var(--faint)","marginBottom":"6px"}}>{"VIEW AS"}</div>
+                <RoleSwitcher compact />
               </div>
               <button className="ix4" onClick={v.goSettings} onPointerEnter={v.setBtnIn} onPointerLeave={v.setBtnOut} style={{"position":"relative","width":"100%","height":"46px","marginTop":"16px","display":"flex","alignItems":"center","gap":"10px","padding":"0 5px 0 16px","background":"var(--surface-2)","border":"1px solid var(--border)","borderRadius":"999px","color":"var(--ink)","fontSize":"14px","fontWeight":"600","letterSpacing":"-.1px","cursor":"pointer","overflow":"hidden","isolation":"isolate","boxShadow":"0 1px 0 rgba(255,255,255,.05) inset,0 2px 8px rgba(0,0,0,.18)","transition":"border-color .4s var(--ease)"}}>
                 <span style={css(v.setDotStyle)} />
@@ -143,15 +157,15 @@ export default function AppShell({ v }: Props) {
               </span>
             </button>
             <div style={css(cat(v.railRowStyle, "margin-top:10px;padding:12px 10px;border-top:1px solid var(--border)"))}>
-              <div style={{"width":"40px","height":"40px","flex":"none","borderRadius":"12px","background":"var(--surface-2)","border":"1px solid var(--border)","color":"var(--body)","display":"flex","alignItems":"center","justifyContent":"center","fontSize":"12px","fontWeight":"600","cursor":"pointer"}}>
-                {"MK"}
+              <div onClick={v.cycleRole} title="Switch role" style={{"width":"40px","height":"40px","flex":"none","borderRadius":"12px","background":"var(--surface-2)","border":"1px solid var(--border)","color":"var(--body)","display":"flex","alignItems":"center","justifyContent":"center","fontSize":"12px","fontWeight":"600","cursor":"pointer"}}>
+                {v.meInitials}
               </div>
               <span style={css(v.brandStyle)}>
                 <span style={{"display":"block","fontSize":"14px","fontWeight":"500","color":"var(--ink)"}}>
-                  {"Martin Kilbride"}
+                  {v.meName}
                 </span>
                 <span style={{"display":"block","marginTop":"2px","fontSize":"12px","color":"var(--faint)"}}>
-                  {"Kilbride Group · Owner"}
+                  {v.meSub}
                 </span>
               </span>
             </div>
@@ -312,10 +326,10 @@ export default function AppShell({ v }: Props) {
                         <>
                           <div style={{"minWidth":"0"}}>
                             <div style={{"fontSize":"12px","fontWeight":"500","lineHeight":"1.2","whiteSpace":"nowrap"}}>
-                              {"Martin Kilbride"}
+                              {v.meName}
                             </div>
                             <div style={{"fontSize":"10.5px","color":"var(--faint)","lineHeight":"1.2"}}>
-                              {"Owner"}
+                              {v.meRole}
                             </div>
                           </div>
                         </>
@@ -390,6 +404,7 @@ export default function AppShell({ v }: Props) {
         {v.isDashboard && <DashboardKpiBand v={v} />}
         <div data-scroll-main="1" style={{"flex":"1","minHeight":"0","overflowY":"auto","overflowX":"hidden","scrollbarWidth":"none"}}>
           {v.isChat && <Home v={v} />}
+          {v.fmPage && <ErrorBoundary key={v.page} name={v.page}><FMPage page={v.page} /></ErrorBoundary>}
           {v.isWork && <Work v={v} />}
           {v.isRecords && <Records v={v} />}
           {v.rec?.isContacts && (
@@ -453,7 +468,7 @@ export default function AppShell({ v }: Props) {
                           {"No contacts match"}
                         </div>
                         <div style={{"fontSize":"13px","color":"var(--dim)","marginTop":"6px"}}>
-                          {"Try fewer words — it matches on name, role, organisation and tag."}
+                          {"Try fewer words, it matches on name, role, organisation and tag."}
                         </div>
                       </div>
                     </>
@@ -472,6 +487,7 @@ export default function AppShell({ v }: Props) {
           )}
           {v.rec?.isFiles && <RecordsFiles v={v} />}
           {v.rec?.isOntology && <RecordsOntology v={v} />}
+          {v.rec?.isAll && <RecordsFM />}
           {v.isActivity && <Activity v={v} />}
           {v.act?.detailOpen && (
             <>
@@ -576,10 +592,10 @@ export default function AppShell({ v }: Props) {
               </div>
             </>
           )}
-          {v.isSettings && <Settings v={v} />}
-          {v.isDashboard && <Dashboard v={v} />}
+          {v.isSettings && <><SettingsFM /><Settings v={v} /></>}
+          {v.isDashboard && <ErrorBoundary name="Dashboard"><FMDashboard /></ErrorBoundary>}
           {v.isAgents && !v.agentsApprovals && <Agents v={v} />}
-          {v.agentsApprovals && <AgentsApprovals v={v} />}
+          {v.agentsApprovals && <ErrorBoundary key={v.agentsTabId} name="Agents"><AgentsFM tab={v.agentsTabId} /></ErrorBoundary>}
         </div>
       </main>
       {v.showFab && (
@@ -773,7 +789,7 @@ export default function AppShell({ v }: Props) {
                 <>
                   <div style={{"padding":"8px 24px 4px","animation":"expandIn .3s var(--ease) both"}}>
                     <div style={{"fontFamily":"var(--mono)","fontSize":"9.5px","letterSpacing":"0.13em","color":"var(--faint)","marginTop":"10px"}}>
-                      {"PULSE BUILT THIS — EDIT ANYTHING"}
+                      {"PULSE BUILT THIS, EDIT ANYTHING"}
                     </div>
                     <div style={{"marginTop":"14px"}}>
                       {arr(v.builder?.blocks).map((b: any, i145: number) => (
@@ -822,6 +838,7 @@ export default function AppShell({ v }: Props) {
       {v.newRec?.open && <NewRecordDialog v={v} />}
       {v.paletteOpen && <CommandPalette v={v} />}
       {v.bgGallery?.open && <BackgroundGallery v={v} />}
+      <ErrorBoundary name="layer"><FMLayer /></ErrorBoundary>
     </div>
     </>
   );

@@ -30,8 +30,8 @@ const NAVS: [View, string, IcoName][] = [
 const FILTERS: [Filter, string][] = [["all", "All"], ["page", "Pages"], ["sheet", "Sheets"], ["tracker", "Trackers"], ["file", "Files"]];
 const ACCESS_OPTS: [Access, string, string][] = [
   ["me", "Only me", "Nobody else can open it"],
-  ["people", "Specific people", "Aoife, Tom and Niamh"],
-  ["company", "Company", "Everyone at Kilbride Group"],
+  ["people", "Specific people", "Sinéad, Declan and Ciarán"],
+  ["company", "Company", "Everyone at Donaghy FM"],
   ["public", "Anyone with the link", "No sign-in needed to view"],
 ];
 

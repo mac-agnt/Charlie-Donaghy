@@ -1,0 +1,53 @@
+/* Customers & Quotes module styles (Pulse tokens). */
+.cm-sec{display:flex;flex-direction:column;gap:6px}
+.cm-sec-h{display:flex;align-items:center;gap:8px;min-height:28px}
+.cm-row{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:10px;width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:var(--r-sm,10px);background:var(--surface-faint);cursor:pointer;font-size:13px;color:var(--body);min-width:0;transition:border-color .15s var(--ease),background .15s var(--ease)}
+.cm-row + .cm-row{margin-top:2px}
+.cm-row:hover{border-color:var(--border-strong);background:var(--surface-2)}
+.cm-row.static{cursor:default}
+.cm-row.static:hover{border-color:var(--border);background:var(--surface-faint)}
+.cm-none{font-size:12.5px;padding:4px 2px}
+.cm-mini .fm-stat{padding:11px 13px;cursor:default}
+.cm-mini .fm-stat .v{font-size:19px}
+.cm-search{position:relative;display:flex;align-items:center;width:260px;max-width:100%}
+.cm-search svg{position:absolute;left:11px;color:var(--faint);pointer-events:none}
+.cm-search .fm-input{padding-left:32px;height:32px}
+.cm-kind{display:inline-flex;align-items:center;gap:4px;color:var(--dim)}
+.cm-tl i.cm-tl-ok{border-color:var(--ok)}
+.cm-tl i.cm-tl-warn{border-color:var(--warn)}
+.cm-secure{border:1px dashed var(--warn)!important}
+
+.cm-pipe{display:grid;grid-template-columns:repeat(7,minmax(214px,1fr));gap:10px;overflow-x:auto;padding-bottom:8px;align-items:start}
+.cm-pipe .fm-col{min-height:260px}
+.cm-col-tot{font-family:var(--mono);font-size:10.5px;color:var(--faint);padding:0 6px 4px}
+.cm-enq{border-style:dashed}
+.cm-builder{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(300px,1fr);gap:14px;align-items:start}
+@media (max-width:1100px){.cm-builder{grid-template-columns:minmax(0,1fr)}}
+.cm-lines .fm-tr > div{white-space:normal}
+.cm-qty{width:64px;height:30px;padding:0 8px;text-align:right}
+.cm-price{width:92px;height:30px;padding:0 8px;text-align:right}
+.cm-cat{max-height:420px;overflow-y:auto;display:flex;flex-direction:column;gap:4px;scrollbar-width:thin}
+.cm-prod{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:var(--r-sm,10px);border:1px solid var(--border);background:var(--surface-faint);cursor:pointer;font-size:12.5px;color:var(--body)}
+.cm-prod:hover{border-color:var(--accent-line);background:var(--accent-faint)}
+.cm-prod b{color:var(--ink);font-weight:500;display:block}
+.cm-totals{display:flex;flex-direction:column;gap:6px;font-size:13px}
+.cm-totals > div{display:flex;justify-content:space-between;gap:10px}
+.cm-totals .big{font-size:20px;font-weight:600;color:var(--ink);letter-spacing:-.4px;padding-top:8px;border-top:1px solid var(--border)}
+.cm-flow{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.cm-flow .st{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:999px;font-size:11.5px;background:var(--track);color:var(--faint)}
+.cm-flow .st.done{background:var(--ok-soft);color:var(--ok)}
+.cm-flow .st.now{background:var(--accent-soft);color:var(--accent)}
+.cm-docwrap{background:var(--surface-faint);border:1px solid var(--border);border-radius:var(--card-r,18px);padding:28px 18px}
+.fm-doc .sig{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:22px}
+.fm-doc .sig div{border-top:1px solid #c9cbd1;padding-top:6px;font-size:11px;color:#6b7078}
+.fm-doc .sec-n{display:inline-block;width:22px;color:#9a9da5;font-variant-numeric:tabular-nums}
+.fm-doc .foot{margin-top:26px;padding-top:10px;border-top:1px solid #e3e4e8;font-size:10.5px;color:#8a8e96;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.cm-tpl{display:flex;flex-direction:column;gap:6px;font-size:12.5px;color:var(--body)}
+.cm-tpl ol{margin:0;padding-left:18px;color:var(--dim);line-height:1.7}
+
+@media print{
+  body *{visibility:hidden!important}
+  .cm-print, .cm-print *{visibility:visible!important}
+  .cm-print{position:absolute!important;left:0;top:0;width:100%;box-shadow:none!important;max-width:none!important;margin:0!important}
+  .cm-docwrap{border:0!important;background:none!important;padding:0!important}
+}

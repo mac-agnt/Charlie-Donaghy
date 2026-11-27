@@ -7,9 +7,9 @@
 
 export type GazeEye = { ex: number; ey: number; rot?: number };
 export type GazeSpec = {
-  /** Ellipsoid radii and centre, in the 0–100 viewBox. */
+  /** Ellipsoid radii and centre, in the 0-100 viewBox. */
   sx: number; sy: number; cx: number; cy: number;
-  /** How far the eyes may turn, 0–1. Wide eyes get less so they stay on the shell. */
+  /** How far the eyes may turn, 0-1. Wide eyes get less so they stay on the shell. */
   travel: number;
   eyes: GazeEye[];
 };

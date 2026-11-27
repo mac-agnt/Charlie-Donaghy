@@ -11,7 +11,7 @@ type Props = {
 const eur = (n: number) => "€" + Math.round(n).toLocaleString("en-IE");
 const TAGS = ["High", "Medium", "Low"];
 const tagTone = (t?: string) => (t === "High" ? "bad" : t === "Medium" ? "warn" : "");
-const WHO = ["me", "aoife", "tom", "niamh", "seamus"];
+const WHO = ["me", "sinead", "declan", "ciaran", "shane"];
 
 export function Avatar({ who, size = 22 }: { who: string; size?: number }) {
   const p = PEOPLE[who];

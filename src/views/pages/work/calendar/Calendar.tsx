@@ -265,7 +265,7 @@ export default function Calendar({ v }: { v: any }) {
       }, 300 + i * 420),
     );
     window.setTimeout(
-      () => say("Helios planned " + placed.length + " task" + (placed.length > 1 ? "s" : "") + " into " + (late ? "tomorrow's" : "today's") + " gaps"),
+      () => say("Charlie AI planned " + placed.length + " task" + (placed.length > 1 ? "s" : "") + " into " + (late ? "tomorrow's" : "today's") + " gaps"),
       300 + placed.length * 420,
     );
   };
@@ -743,7 +743,7 @@ export default function Calendar({ v }: { v: any }) {
               {(["mine", "everyone"] as const).map((w) => (
                 <button key={w} data-hot={who === w ? "1" : undefined} onClick={() => { setWho(w); setMenu(null); }}>
                   <Ico d={w === "mine" ? "user" : "users"} size={15} />
-                  {w === "mine" ? "Mine" : "Everyone at Kilbride Group"}
+                  {w === "mine" ? "Mine" : "Everyone at Donaghy FM"}
                   {who === w && <Ico d="check" size={13} sw={2.4} style={{ marginLeft: "auto" }} />}
                 </button>
               ))}

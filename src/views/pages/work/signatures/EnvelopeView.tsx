@@ -33,7 +33,7 @@ export function EnvelopeView({ env, v }: { env: M.Envelope; v: any }) {
   const reason = draft ? M.sendReason(env) : null;
   const pending = env.signers.filter((s) => s.state !== "signed");
 
-  useEffect(() => { if (env.id === M.CASEY) M.armCasey(); }, [env.id]);
+  useEffect(() => { if (env.id === M.FIRST_ENV) M.armFirstEnvelope(); }, [env.id]);
   useEffect(() => { if (!myTurn) setSigning(false); }, [myTurn]);
   useEffect(() => {
     if (!armed) return;

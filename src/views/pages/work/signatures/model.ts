@@ -41,9 +41,9 @@ const WHERE = RAW.SIGN_WHERE as unknown as string;
 const SEEDS = RAW.SIGN_ENVELOPES as unknown as SeedEnv[];
 
 export const K = { envs: "sign:envelopes", open: "sign:open", filter: "sign:filter", toast: "sign:toast", mySig: "sign:signature" } as const;
-export const CASEY = "env-casey";
+export const FIRST_ENV = "env-boyne";
 const DONE = "Completed. Signed copy filed in Canvas › Signed documents";
-const MESSAGE = "Hi, please review and sign where marked. Any questions, ring me on 021 435 2210. Martin";
+const MESSAGE = "Hi, please review and sign where marked. Any questions, ring me on 01 555 0142. Charlie";
 
 /* ── time ─────────────────────────────────────────────── */
 export const MIN = 60000;
@@ -71,7 +71,7 @@ export function hex(seed: string, len: number) {
   while (out.length < len) { x ^= x << 13; x ^= x >>> 17; x ^= x << 5; out += (x >>> 0).toString(16).padStart(8, "0"); }
   return out.slice(0, len);
 }
-const codeFor = (id: string) => { const h = hex(id, 8).toUpperCase(); return `KB-${h.slice(0, 4)}-${h.slice(4)}`; };
+const codeFor = (id: string) => { const h = hex(id, 8).toUpperCase(); return `DF-${h.slice(0, 4)}-${h.slice(4)}`; };
 const ipFor = (s: string) => {
   const h = parseInt(hex(s, 7), 16);
   return `${[86, 89, 37, 78][h % 4]}.${(h >> 3) % 250 + 3}.${(h >> 11) % 250 + 3}.${(h >> 19) % 250 + 3}`;
@@ -279,12 +279,12 @@ export function walkOthers(id: string, firstDelay = 4000) {
     window.setTimeout(() => { armed.delete(key); signedBy(id, s.id); }, t0 + 6000);
   });
 }
-let caseyArmed = false;
-/** The seeded Casey envelope signs itself about 20 seconds after you first open it. */
-export function armCasey() {
-  if (caseyArmed) return;
-  caseyArmed = true;
-  walkOthers(CASEY, 14000);
+let firstArmed = false;
+/** The seeded Boyne Valley envelope signs itself about 20 seconds after you first open it. */
+export function armFirstEnvelope() {
+  if (firstArmed) return;
+  firstArmed = true;
+  walkOthers(FIRST_ENV, 14000);
 }
 
 /* ── actions ──────────────────────────────────────────── */
@@ -337,8 +337,8 @@ export function addSigner(id: string, name: string, email: string): string {
     let fields = e.fields;
     /* On a document with a signature block, drop the signer's fields into their column. */
     if (e.doc.kind === "seed" && DOCS[e.doc.key]) {
-      const us = Math.max(0, DOCS[e.doc.key].sides.findIndex((x) => /Kilbride/i.test(x)));
-      const party = /@kilbridegroup\.ie$/i.test(email) ? us : 1 - us;
+      const us = Math.max(0, DOCS[e.doc.key].sides.findIndex((x) => /Donaghy/i.test(x)));
+      const party = /@donaghyfm\.ie$/i.test(email) ? us : 1 - us;
       if (!e.signers.some((x) => x.party === party)) {
         s = { ...s, party };
         fields = [...fields, ...blockFields(sid, party)];

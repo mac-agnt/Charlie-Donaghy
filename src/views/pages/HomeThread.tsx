@@ -1,9 +1,11 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { arr, cat, css, txt } from "../../runtime/template";
 
 type Props = { v: any };
 
 export default function HomeThread({ v }: Props) {
+  const n = Array.isArray(v.thread) ? v.thread.length : 0;
+  useEffect(() => { document.querySelector("[data-thread-end]")?.scrollIntoView({ behavior: "smooth", block: "end" }); }, [n]);
   return (
     <>
       <div style={css(v.threadWidthStyle)}>
@@ -126,7 +128,7 @@ export default function HomeThread({ v }: Props) {
                             </div>
                             {arr(m?.rows).map((r: any, i10: number) => (
                               <Fragment key={i10}>
-                                <div className="ixh" style={css(cat("display:grid;grid-template-columns:", m?.tableCols, ";border-top:1px solid var(--border)"))}>
+                                <div className="ixh" onClick={r?.open} title={r?.open ? "Open record" : undefined} style={css(cat("display:grid;grid-template-columns:", m?.tableCols, ";border-top:1px solid var(--border)", r?.open ? ";cursor:pointer" : ""))}>
                                   {arr(r?.cells).map((cell: any, i11: number) => (
                                     <Fragment key={i11}>
                                       <div style={css(cat("padding:12px 16px;font-family:", cell?.font, ";font-size:13px;color:", cell?.color, ";overflow:hidden;text-overflow:ellipsis;white-space:nowrap"))}>
@@ -166,6 +168,9 @@ export default function HomeThread({ v }: Props) {
                           </div>
                         </>
                       )}
+                      {m?.decided && (
+                        <div style={{"marginTop":"12px","fontFamily":"var(--mono)","fontSize":"10px","letterSpacing":"0.08em","color":"var(--faint)"}}>{m.decided}</div>
+                      )}
                       {m?.hasActions && (
                         <>
                           <div style={{"display":"flex","flexWrap":"wrap","gap":"8px","marginTop":"16px"}}>
@@ -187,6 +192,7 @@ export default function HomeThread({ v }: Props) {
           </Fragment>
         ))}
       </div>
+      <div data-thread-end="1" />
     </>
   );
 }

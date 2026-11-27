@@ -1,31 +1,32 @@
 /* Seed data for Work › Canvas (pages, sheets, trackers, pipelines and files).
-   Re-skin per client like data.js: names, folders, people and contents. */
+   Re-skin per client like data.js: names, folders, people and contents.
+   Charlie Donaghy facilities demo. All content is demonstration data. */
 
 /* People who own or edit things. "me" is whoever is signed in. */
 export const CANVAS_PEOPLE = {
-  me:       {name:"Martin Kilbride", short:"Me", initials:"MK", tint:"var(--accent)"},
-  aoife:    {name:"Aoife Nolan", short:"Aoife Nolan", initials:"AN", tint:"#9fd6f0"},
-  tom:      {name:"Tom Walsh", short:"Tom Walsh", initials:"TW", tint:"#e6c78a"},
-  niamh:    {name:"Niamh Cronin", short:"Niamh Cronin", initials:"NC", tint:"#c8b4f0"},
-  seamus:   {name:"Séamus Byrne", short:"Séamus Byrne", initials:"SB", tint:"#e2a08c"},
+  me:       {name:"Charlie Donaghy", short:"Me", initials:"CD", tint:"var(--accent)"},
+  sinead:   {name:"Sinéad Kelly", short:"Sinéad Kelly", initials:"SK", tint:"#9fd6f0"},
+  declan:   {name:"Declan Murphy", short:"Declan Murphy", initials:"DM", tint:"#f0a58c"},
+  ciaran:   {name:"Ciarán Byrne", short:"Ciarán Byrne", initials:"CB", tint:"#e6c78a"},
+  shane:    {name:"Shane Kavanagh", short:"Shane Kavanagh", initials:"SH", tint:"#c8b4f0"},
   uploaded: {name:"Uploaded", short:"Uploaded", initials:"", tint:""},
   signed:   {name:"Signatures", short:"Signatures", initials:"", tint:""}
 };
 
 export const CANVAS_FOLDERS = [
-  {id:"clients", name:"Clients", parent:null},
-  {id:"casey", name:"Casey Builders", parent:"clients"},
-  {id:"dunne", name:"Dunne & Sons Ltd", parent:"clients"},
-  {id:"fitz", name:"Fitzgerald Heating", parent:"clients"},
-  {id:"riverside", name:"Riverside Developments", parent:"clients"},
+  {id:"clients", name:"Customers", parent:null},
+  {id:"allendale", name:"Allendale Management CLG", parent:"clients"},
+  {id:"ardmore", name:"Ardmore Property Management", parent:"clients"},
+  {id:"boyne", name:"Boyne Valley Foods", parent:"clients"},
+  {id:"harbourview", name:"Harbourview Hotel", parent:"clients"},
   {id:"os", name:"Company OS", parent:null},
-  {id:"sales", name:"Sales", parent:"os"},
+  {id:"sales", name:"Sales and quotes", parent:"os"},
   {id:"accounts", name:"Accounts and finance", parent:"os"},
   {id:"hr", name:"People and HR", parent:"os"},
-  {id:"depots", name:"Depots", parent:null},
-  {id:"ballincollig", name:"Ballincollig", parent:"depots"},
-  {id:"mallow", name:"Mallow yard", parent:"depots"},
-  {id:"compliance", name:"Compliance", parent:null},
+  {id:"ops", name:"Operations", parent:null},
+  {id:"servicing", name:"Servicing and PPM", parent:"ops"},
+  {id:"vans", name:"Vans and stock", parent:"ops"},
+  {id:"compliance", name:"Certificates", parent:null},
   {id:"proposals", name:"Proposals", parent:null},
   {id:"signed", name:"Signed documents", parent:null},
   {id:"templates", name:"Templates", parent:null}
@@ -35,133 +36,132 @@ export const CANVAS_FOLDERS = [
    access: me (only me) | people (n people) | company | public (link) | records
    ago: minutes since the last activity. live: who has it open right now. */
 export const CANVAS_DOCS = [
-  {id:"d-casey-plan", title:"Casey Builders account plan 2027", kind:"page", folder:"casey", owner:"aoife", access:"people", people:3, ago:52, shared:true, live:["aoife"]},
-  {id:"d-move", title:"Ballincollig depot move", kind:"tracker", folder:"ballincollig", owner:"tom", access:"people", people:4, ago:130, shared:true, live:["tom","niamh"]},
-  {id:"d-dunne-plan", title:"Dunne & Sons recovery plan", kind:"page", folder:"dunne", owner:"me", access:"me", ago:240},
-  {id:"d-pipeline", title:"Trade account pipeline", kind:"pipeline", folder:"sales", owner:"me", access:"company", ago:60 * 20, starred:true},
-  {id:"d-monthend", title:"Month-end close checklist", kind:"tracker", folder:"accounts", owner:"aoife", access:"company", ago:60 * 26, shared:true, starred:true},
-  {id:"d-prop-river", title:"Riverside block C heating proposal", kind:"page", folder:"proposals", owner:"me", access:"people", people:2, ago:60 * 30},
-  {id:"d-quote", title:"Quote calculator", kind:"sheet", folder:"sales", owner:"me", access:"company", ago:60 * 72, starred:true, live:["aoife"]},
-  {id:"d-stock", title:"Weekly stock check", kind:"sheet", folder:"mallow", owner:"niamh", access:"company", ago:60 * 24 * 2, shared:true},
-  {id:"d-playbook", title:"Credit control playbook", kind:"page", folder:"accounts", owner:"aoife", access:"company", ago:60 * 24 * 5, shared:true},
-  {id:"d-vans", title:"Van fleet costs 2026", kind:"sheet", folder:"accounts", owner:"tom", access:"people", people:2, ago:60 * 24 * 6, shared:true},
-  {id:"f-fitz-prop", title:"Fitzgerald Heating boiler upgrade.pdf", kind:"pdf", folder:"proposals", owner:"me", access:"public", ago:60 * 24 * 7, size:"640 KB", pages:4,
-   body:["Proposal to replace the oil boiler at the Fitzgerald Heating showroom with a 30kW condensing gas combi, including flue, controls and a system flush.",
-     "Fixed price €6,840 plus VAT at 13.5%. Works take two days and the showroom stays open throughout.",
-     "Valid for 30 days. Payment on 30-day trade terms once the commissioning certificate is issued."]},
-  {id:"d-prices", title:"Price list Q1 2027", kind:"sheet", folder:"sales", owner:"me", access:"public", ago:60 * 24 * 8},
-  {id:"d-onboarding", title:"Installer onboarding", kind:"page", folder:"hr", owner:"tom", access:"company", ago:60 * 24 * 13, shared:true},
-  {id:"f-casey-fw", title:"Casey Builders framework 2026.pdf", kind:"pdf", folder:"casey", owner:"uploaded", access:"records", ago:60 * 24 * 21, size:"412 KB", pages:6,
-   body:["The framework sets the discount tiers for 2026 and the payment terms Casey Builders trade on. Tier two applies from €40k of annual spend, which they passed in August.",
-     "Pricing is fixed to the June supplier agreement, so a change on the Munster side flows through here rather than being renegotiated separately.",
-     "Termination requires sixty days' notice on either side. Nothing in the document blocks putting the account on stop for non-payment."]},
-  {id:"f-dunne-credit", title:"Dunne & Sons credit application.pdf", kind:"pdf", folder:"dunne", owner:"uploaded", access:"records", ago:60 * 24 * 19, size:"1.2 MB", pages:4,
-   body:["The original 2011 application, signed by Liam Dunne, setting a €20,000 limit against thirty-day terms.",
-     "Days-to-pay ran at twelve for most of that period and moved to seventy-four after May 2026, which is what put the account on stop.",
-     "The personal guarantee in section four is still in force and has never been called on."]},
-  {id:"f-mallow", title:"Mallow yard licence.pdf", kind:"pdf", folder:"mallow", owner:"uploaded", access:"records", ago:60 * 24 * 40, size:"220 KB", pages:3,
-   body:["Licence to occupy the yard at Mallow Business Park for storage of plumbing and heating stock. Term runs to 31 March 2028.",
-     "Rent is €1,450 a month, reviewed every two years. Hazardous materials need written consent from the landlord first."]},
-  {id:"f-gas", title:"Gas Safe certificates 2026.pdf", kind:"pdf", folder:"compliance", owner:"uploaded", access:"records", ago:60 * 24 * 55, size:"2.4 MB", pages:9,
-   body:["Current registration certificates for all nine installers. Séamus Byrne's renewal is due in January and has been booked.",
-     "Each certificate lists the categories the installer is cleared for. Commercial catering is limited to two people."]},
-  {id:"f-signed-munster", title:"Munster Plumbing supply agreement 2027 (signed).pdf", kind:"pdf", folder:"signed", owner:"signed", access:"records", ago:60 * 24 * 13, size:"318 KB", pages:3,
-   body:["Supply agreement between Munster Plumbing Supplies and Kilbride Group for 2027. Signed by Cathal Moore and Martin Kilbride.",
-     "Prices hold to 31 March 2027, then move with the published list. Delivery to Little Island within two working days."]},
-  {id:"f-signed-fitz", title:"Fitzgerald Heating credit application (signed).pdf", kind:"pdf", folder:"signed", owner:"signed", access:"records", ago:60 * 24 * 16, size:"204 KB", pages:2,
-   body:["Credit application from Fitzgerald Heating for a €15,000 limit on thirty-day terms. Signed by Máire Fitzgerald and Aoife Nolan."]},
-  {id:"f-signed-seamus", title:"Séamus Byrne contract variation (signed).pdf", kind:"pdf", folder:"signed", owner:"signed", access:"records", ago:60 * 24 * 22, size:"96 KB", pages:2,
-   body:["Variation to Séamus Byrne's employment contract moving his base to Ballincollig from 1 December 2026. Signed by Séamus Byrne and Martin Kilbride."]},
-  {id:"f-signed-river", title:"Riverside Developments site access (signed).pdf", kind:"pdf", folder:"signed", owner:"signed", access:"records", ago:60 * 24 * 29, size:"151 KB", pages:2,
-   body:["Site access agreement for block C at the Riverside scheme. Signed by Gráinne Walsh and Martin Kilbride."]},
+  {id:"d-dec-plan", title:"December service plan", kind:"page", folder:"servicing", owner:"sinead", access:"people", people:3, ago:52, shared:true, live:["sinead"]},
+  {id:"d-allendale", title:"Allendale zone 4 repair", kind:"tracker", folder:"allendale", owner:"declan", access:"people", people:4, ago:130, shared:true, live:["declan","sinead"]},
+  {id:"d-ardmore-renewal", title:"Ardmore contract renewal notes", kind:"page", folder:"ardmore", owner:"me", access:"me", ago:240},
+  {id:"d-pipeline", title:"Installation pipeline", kind:"pipeline", folder:"sales", owner:"me", access:"company", ago:60 * 20, starred:true},
+  {id:"d-monthend", title:"Month-end checklist", kind:"tracker", folder:"accounts", owner:"sinead", access:"company", ago:60 * 26, shared:true, starred:true},
+  {id:"d-prop-boyne", title:"Boyne Valley Foods fire alarm proposal notes", kind:"page", folder:"boyne", owner:"me", access:"people", people:2, ago:60 * 30},
+  {id:"d-quote", title:"Quote calculator", kind:"sheet", folder:"sales", owner:"me", access:"company", ago:60 * 72, starred:true, live:["sinead"]},
+  {id:"d-stock", title:"Engineer van stock", kind:"sheet", folder:"vans", owner:"declan", access:"company", ago:60 * 24 * 2, shared:true},
+  {id:"d-playbook", title:"Unbilled work playbook", kind:"page", folder:"accounts", owner:"sinead", access:"company", ago:60 * 24 * 5, shared:true},
+  {id:"d-vans", title:"Van fleet costs 2026", kind:"sheet", folder:"vans", owner:"sinead", access:"people", people:2, ago:60 * 24 * 6, shared:true},
+  {id:"f-ashbourne-prop", title:"Ashbourne Retail Park LED emergency lighting.pdf", kind:"pdf", folder:"proposals", owner:"me", access:"public", ago:60 * 24 * 7, size:"640 KB", pages:4,
+   body:["Proposal to replace the fluorescent emergency fittings across the landlord areas of Units 1 to 6 with self-contained LED bulkheads and exit signs.",
+     "Price €9,880 plus VAT. Works take five days and the retail units stay open throughout.",
+     "Valid for 60 days. Payment 30 days from invoice once the completion report is issued."]},
+  {id:"d-prices", title:"Rate card 2027 (draft)", kind:"sheet", folder:"sales", owner:"me", access:"me", ago:60 * 24 * 8},
+  {id:"d-onboarding", title:"Engineer onboarding", kind:"page", folder:"hr", owner:"sinead", access:"company", ago:60 * 24 * 13, shared:true},
+  {id:"f-allendale-cert", title:"Allendale Court fire alarm certificate 2026.pdf", kind:"pdf", folder:"allendale", owner:"uploaded", access:"records", ago:60 * 24 * 21, size:"412 KB", pages:3,
+   body:["Annual inspection and servicing certificate for the addressable fire alarm at Allendale Court, Clonsilla.",
+     "Zone 4 covers the plant room and the basement car park. The open repair on that zone (J-4567) is recorded against this system.",
+     "Access arrangements for the plant room are held on the site record and are not reproduced in customer documents."]},
+  {id:"f-harbourview-report", title:"Harbourview Hotel service report 9 Nov.pdf", kind:"pdf", folder:"harbourview", owner:"uploaded", access:"records", ago:60 * 24 * 19, size:"1.2 MB", pages:2,
+   body:["Monthly fire systems visit: panel, detectors on rotation, sounders and emergency lighting flick test all passed.",
+     "Hotel log signed by the duty manager. Hose reels are due their annual test in December."]},
+  {id:"f-yard", title:"Maynooth yard licence.pdf", kind:"pdf", folder:"vans", owner:"uploaded", access:"records", ago:60 * 24 * 40, size:"220 KB", pages:3,
+   body:["Licence to occupy the yard at Maynooth Business Campus for van parking and stock storage. Term runs to 31 March 2028.",
+     "Rent is €1,150 a month, reviewed every two years."]},
+  {id:"f-certs", title:"Engineer qualifications 2026.pdf", kind:"pdf", folder:"compliance", owner:"uploaded", access:"records", ago:60 * 24 * 55, size:"2.4 MB", pages:9,
+   body:["Training records and qualifications for all six engineers, filed by division.",
+     "Niall Dempsey's fire alarm cross-training was completed in September, so he can cover fire work when Declan or Ciarán are on installations."]},
+  {id:"f-signed-supplier", title:"Eastern Fire Supplies trade agreement 2027 (signed).pdf", kind:"pdf", folder:"signed", owner:"signed", access:"records", ago:60 * 24 * 13, size:"318 KB", pages:3,
+   body:["Trade supply agreement between Eastern Fire Supplies and Donaghy FM for 2027. Signed by both parties.",
+     "Prices hold to 31 March 2027, then move with the published list. Delivery to Maynooth within two working days."]},
+  {id:"f-signed-lakeside", title:"Lakeside Credit Union camera quote acceptance (signed).pdf", kind:"pdf", folder:"signed", owner:"signed", access:"records", ago:60 * 24 * 16, size:"204 KB", pages:2,
+   body:["Acceptance of Q-2604 for four additional cameras covering the rear car park. Signed by Joan Kinsella and Charlie Donaghy."]},
+  {id:"f-signed-gavin", title:"Gavin Doyle flexible working agreement (signed).pdf", kind:"pdf", folder:"signed", owner:"signed", access:"records", ago:60 * 24 * 22, size:"96 KB", pages:2,
+   body:["Agreed flexible working: Gavin finishes at 15:00 on Fridays. Signed by Gavin Doyle and Charlie Donaghy."]},
+  {id:"f-signed-celbridge", title:"Celbridge Business Campus access control order (signed).pdf", kind:"pdf", folder:"signed", owner:"signed", access:"records", ago:60 * 24 * 29, size:"151 KB", pages:2,
+   body:["Order for the Block B access control upgrade (Q-2603). Signed by Mark Fennelly and Charlie Donaghy."]},
   {id:"d-tpl-proposal", title:"Proposal template", kind:"page", folder:"templates", owner:"me", access:"company", ago:60 * 24 * 34},
-  {id:"d-tpl-survey", title:"Site survey form", kind:"page", folder:"templates", owner:"seamus", access:"company", ago:60 * 24 * 41, shared:true},
+  {id:"d-tpl-survey", title:"Site survey form", kind:"page", folder:"templates", owner:"declan", access:"company", ago:60 * 24 * 41, shared:true},
   {id:"d-tpl-costing", title:"Job costing sheet", kind:"sheet", folder:"templates", owner:"me", access:"company", ago:60 * 24 * 48},
-  {id:"b-prices-25", title:"Price list 2025", kind:"sheet", folder:"sales", owner:"me", access:"company", ago:60 * 24 * 9, binned:true},
-  {id:"b-xmas", title:"Christmas opening hours, draft", kind:"page", folder:"", owner:"niamh", access:"company", ago:60 * 24 * 3, binned:true, shared:true}
+  {id:"b-prices-25", title:"Rate card 2025", kind:"sheet", folder:"sales", owner:"me", access:"company", ago:60 * 24 * 9, binned:true},
+  {id:"b-xmas", title:"Christmas shutdown rota, draft", kind:"page", folder:"", owner:"sinead", access:"company", ago:60 * 24 * 3, binned:true, shared:true}
 ];
 
 /* Page contents. Each block: [type, text, checked]. Types: h1 h2 h3 p bullet number todo quote callout divider */
 export const CANVAS_PAGES = {
-  "d-casey-plan": [
-    ["callout","Tier two pricing applies from €40k of annual spend. Casey passed it in August, so every 2027 quote starts from tier two."],
-    ["h2","Where the account stands"],
-    ["p","Casey Builders are the best payers on the book: twelve days on average, €6,120 open today and nothing overdue. Most of their spend is first fix for the Carrigaline and Ballincollig schemes."],
-    ["h2","Goals for 2027"],
-    ["todo","Get the 2027 trade terms signed. Sent through Signatures, waiting on Dermot.", false],
-    ["todo","Quote Carrigaline phase two first fix", true],
-    ["todo","Move them onto monthly statements", false],
-    ["h2","Contacts"],
-    ["bullet","Dermot Casey, buyer. Prefers WhatsApp for quotes and wants prices held to March."],
-    ["bullet","Accounts go to accounts@caseybuilders.ie, not to Dermot."],
-    ["quote","If you can hold the June copper price until March, the whole of phase two goes through you. Dermot, call on 14 Nov."]
+  "d-dec-plan": [
+    ["callout","12 visits are due in December across 12 contracts. Nothing is booked until Charlie approves the plan in Servicing."],
+    ["h2","What's due"],
+    ["bullet","Fire and lighting: Allendale Court, The Willows, Celbridge Block A, St. Brigid's, Hillview, Greystones Marina, Dunboyne, Harbourview"],
+    ["bullet","Surveillance: Allendale Court CCTV, Maynooth Enterprise Centre"],
+    ["bullet","Grounds: Riverbank Court, Ashbourne Retail Park"],
+    ["h2","Things to watch"],
+    ["todo","Niall is on leave 14 to 18 December. Keep his CCTV visit outside that week", true],
+    ["todo","Ciarán is on leave 21 to 23 December", false],
+    ["todo","Allocate the three visits carried over from November", false],
+    ["todo","Leave room for the Boyne Valley install if it's accepted", false],
+    ["quote","Group the north Kildare visits on the same day where we can. Sinéad, 24 Nov"]
   ],
-  "d-dunne-plan": [
-    ["callout","On stop since 11 Nov. €28,410 open across nine invoices, the oldest at 74 days."],
-    ["h2","The offer"],
-    ["p","A payment plan: €8,000 now, then €5,100 a month for four months. The stop lifts once the first payment clears, with new orders on pro-forma until the balance is under €10,000."],
+  "d-ardmore-renewal": [
+    ["callout","Ardmore is the largest management-company customer: five blocks across north Kildare."],
+    ["h2","The renewal"],
+    ["p","The Willows fire contract (SC-2203) bills monthly at €310. The grounds plan at Riverbank Court is €650 a month. Both renew in the new year."],
     ["h2","Next steps"],
-    ["todo","Check the personal guarantee in section four still holds", true],
-    ["todo","Call Liam Dunne before Friday", false],
-    ["todo","Send the payment plan for signature", false],
-    ["p","If Liam says no, the guarantee is the fallback. Aoife has the paperwork."]
+    ["todo","Check last year's service history for any missed visits", true],
+    ["todo","Call Orla Keegan before Friday", false],
+    ["todo","Send the renewal through Signatures", false],
+    ["p","Offer to add Millbrook and Ardmore Mews to the same contract with one monthly invoice."]
   ],
-  "d-prop-river": [
+  "d-prop-boyne": [
     ["h2","Scope"],
-    ["p","Heating and hot water for the 24 apartments in block C: air-to-water heat pumps, underfloor heating on every floor and a central plant room."],
-    ["bullet","Design, supply and install, including commissioning"],
-    ["bullet","BER-compliant controls in each apartment"],
-    ["bullet","Two-year labour warranty, manufacturer warranty on plant"],
+    ["p","Replace the 2009 conventional system in the production hall with an addressable 4-loop system. IP-rated devices in the wash-down area."],
+    ["bullet","Design, supply, install, commissioning and handover"],
+    ["bullet","Phased so production keeps running"],
+    ["bullet","Completion report and training for the plant team"],
     ["h2","Price"],
-    ["p","€186,400 plus VAT, in three stage payments: 30% on order, 50% at first fix, 20% on commissioning."],
+    ["p","Quote Q-2606. 30% on acceptance, 60% on completion, 10% on handover."],
     ["h2","Programme"],
-    ["p","Eleven weeks on site from the start of February, working around the dry-lining crew."]
+    ["p","15 working days with two fire engineers. Earliest start 1 December, or 4 January for a clash-free window."]
   ],
   "d-playbook": [
-    ["p","How we chase, in order. Helios runs the first three steps on its own and stops at the fourth for a person."],
+    ["p","How we stop completed work sitting unbilled. The agents run the first three steps on their own and stop at the fourth for a person."],
     ["h2","The ladder"],
-    ["number","Day 1 past due: a friendly reminder with the invoice attached."],
-    ["number","Day 7: a second reminder, copying the account owner."],
-    ["number","Day 14: a phone call, logged against the account."],
-    ["number","Day 30: the account goes on stop. Aoife or Martin approves."],
-    ["h2","Accounts on watch"],
-    ["p","Dunne & Sons Ltd is on stop at 74 days. Fitzgerald Heating and Riverside Developments are on watch past 60 days."],
+    ["number","Engineer confirms the job complete. The completion notice and invoice draft are prepared."],
+    ["number","Day 3 with no invoice: the Operations Watchdog flags it."],
+    ["number","Day 7: it goes to the top of Requires attention on the dashboard."],
+    ["number","Charlie approves the invoice. It gets the next number in its division's series."],
+    ["h2","Payment follow-up"],
+    ["p","Overdue invoices get a polite reminder drafted by the Customer Communication Agent. Nothing is sent without approval."],
     ["divider"],
-    ["p","Last reviewed by Aoife Nolan, November 2026."]
+    ["p","Last reviewed by Sinéad Kelly, November 2026."]
   ],
   "d-onboarding": [
-    ["p","What a new installer needs in their first week, in the order they need it."],
+    ["p","What a new engineer needs in their first week, in the order they need it."],
     ["h2","Day one"],
-    ["todo","Van keys, fuel card and the stock app on their phone", false],
-    ["todo","Gas Safe certificate copied into Compliance", false],
-    ["todo","Shadow Séamus on two jobs", false],
+    ["todo","Van keys, fuel card and the engineer app on their phone", false],
+    ["todo","Qualifications copied into Certificates", false],
+    ["todo","Shadow Declan on two jobs", false],
     ["h2","By Friday"],
-    ["todo","First solo service call, checked by a senior installer", false],
-    ["todo","Timesheet and mileage set up with Accounts", false]
+    ["todo","First solo service visit, checked by a senior engineer", false],
+    ["todo","Timesheet set up and first week approved", false]
   ],
   "d-tpl-proposal": [
     ["h2","Scope"],
-    ["p","What we will do, room by room or system by system."],
+    ["p","What we will do, system by system."],
     ["h2","Price"],
-    ["p","The fixed price, VAT rate and stage payments."],
+    ["p","The total price, VAT rate and stage payments."],
     ["h2","Programme"],
-    ["p","Start date, time on site and what we need from the client."],
+    ["p","Start date, time on site and what we need from the customer."],
     ["h2","Terms"],
-    ["p","Valid for 30 days. Thirty-day trade terms once the commissioning certificate is issued."]
+    ["p","Valid for 60 days. Payment 30 days from invoice once the completion report is issued."]
   ],
   "d-tpl-survey": [
-    ["p","Fill this in on site. Photos go in the job folder."],
-    ["h2","Property"],
-    ["bullet","Address and access notes"],
-    ["bullet","Existing system and age"],
-    ["h2","Readings"],
-    ["bullet","Gas pressure at the meter"],
-    ["bullet","Flow rate and temperature at the furthest outlet"],
+    ["p","Fill this in on site. Photos go on the job record."],
+    ["h2","Site"],
+    ["bullet","Address and general access notes (codes go on the site record only)"],
+    ["bullet","Existing system, make and age"],
+    ["h2","Findings"],
+    ["bullet","Devices, zones and cable routes"],
+    ["bullet","Defects found"],
     ["h2","Recommendation"],
-    ["p","What we would fit, and why."]
+    ["p","What we would install, and why."]
   ],
   "b-xmas": [
-    ["p","Counters close at 1pm on 24 Dec and reopen on 29 Dec. Mallow yard stays closed until 2 Jan."]
+    ["p","Office closes at 13:00 on 24 December and reopens on 4 January. One fire engineer on call each day for emergencies."]
   ],
   "t-meeting": [
     ["p","Date, time and who was there."],
@@ -176,117 +176,118 @@ export const CANVAS_PAGES = {
    fmt: per-column number format (eur | pct). bold: 1-based rows drawn bold. */
 export const CANVAS_SHEETS = {
   "d-quote": [
-    {name:"Quote", widths:{A:210, E:170}, fmt:{C:"eur", D:"eur"}, bold:[1, 11],
+    {name:"Quote", widths:{A:230, E:170}, fmt:{C:"eur", D:"eur"}, bold:[1, 11],
      rows:[
        ["Item","Qty","Unit","Total","Notes"],
-       ["Combi boiler 30kW","1","1450","=B2*C2","Includes flue kit"],
-       ["Radiator 600 x 1200","8","96.5","=B3*C3",""],
-       ["Copper pipe 15mm, 3m","24","11.8","=B4*C4",""],
-       ["Fittings pack","6","22","=B5*C5",""],
-       ["Labour, hours","18","55","=B6*C6","Two installers"],
+       ["4MP IP dome camera","6","189","=B2*C2","Vandal-resistant"],
+       ["8-channel NVR","1","420","=B3*C3",""],
+       ["Surveillance hard drive 4TB","1","135","=B4*C4",""],
+       ["16-port PoE switch","1","310","=B5*C5",""],
+       ["Installation and configuration, days","2","980","=B6*C6","Two engineers"],
        [],
        ["Subtotal","","","=SUM(D2:D6)",""],
-       ["Trade discount 8%","","","=-D8*0.08","Tier two"],
+       ["Discount 5%","","","=-D8*0.05",""],
        ["VAT 13.5%","","","=(D8+D9)*0.135",""],
        ["Total","","","=D8+D9+D10",""]
      ]},
-    {name:"Margins", widths:{A:210}, fmt:{B:"eur", C:"eur", D:"pct"}, bold:[1],
+    {name:"Margins", widths:{A:230}, fmt:{B:"eur", C:"eur", D:"pct"}, bold:[1],
      rows:[
        ["Item","Cost","Sell","Margin"],
-       ["Combi boiler 30kW","1180","1450","=1-B2/C2"],
-       ["Radiator 600 x 1200","71","96.5","=1-B3/C3"],
-       ["Copper pipe 15mm, 3m","8.4","11.8","=1-B4/C4"],
-       ["Fittings pack","14.5","22","=1-B5/C5"],
+       ["4MP IP dome camera","128","189","=1-B2/C2"],
+       ["8-channel NVR","290","420","=1-B3/C3"],
+       ["Surveillance hard drive 4TB","92","135","=1-B4/C4"],
+       ["16-port PoE switch","215","310","=1-B5/C5"],
        [],
        ["Average","","","=AVERAGE(D2:D5)"]
      ]}
   ],
   "d-vans": [
-    {name:"2026", widths:{A:150}, fmt:{B:"eur", C:"eur", D:"eur", E:"eur"}, bold:[1, 9],
+    {name:"2026", widths:{A:180}, fmt:{B:"eur", C:"eur", D:"eur", E:"eur"}, bold:[1, 9],
      rows:[
        ["Van","Fuel","Tolls","Repairs","Total"],
-       ["Van 01","4120","310","860","=SUM(B2:D2)"],
-       ["Van 02","3890","295","240","=SUM(B3:D3)"],
-       ["Van 03","4410","402","1980","=SUM(B4:D4)"],
-       ["Van 04","3760","188","3120","=SUM(B5:D5)"],
-       ["Van 05","4025","330","410","=SUM(B6:D6)"],
-       ["Van 06","2980","120","95","=SUM(B7:D7)"],
+       ["Van 01, Declan","4120","310","860","=SUM(B2:D2)"],
+       ["Van 02, Ciarán","3890","295","240","=SUM(B3:D3)"],
+       ["Van 03, Shane","4410","402","1180","=SUM(B4:D4)"],
+       ["Van 04, Niall","3760","388","620","=SUM(B5:D5)"],
+       ["Van 05, Paddy","3025","130","410","=SUM(B6:D6)"],
+       ["Van 06, Gavin","2980","120","95","=SUM(B7:D7)"],
        [],
        ["All vans","=SUM(B2:B7)","=SUM(C2:C7)","=SUM(D2:D7)","=SUM(E2:E7)"]
      ]}
   ],
   "d-stock": [
-    {name:"Mallow yard", widths:{A:220}, bold:[1], fmt:{},
+    {name:"Van 01, Declan", widths:{A:240}, bold:[1], fmt:{},
      rows:[
-       ["Item","Bin","Counted","System","Variance"],
-       ["Copper pipe 15mm, 3m","A-04","212","220","=C2-D2"],
-       ["Copper pipe 22mm, 3m","A-05","148","148","=C3-D3"],
-       ["Push-fit elbow 15mm","B-11","640","655","=C4-D4"],
-       ["Radiator valve pair","B-14","96","90","=C5-D5"],
-       ["Expansion vessel 18L","C-02","14","15","=C6-D6"],
-       ["Pressure relief valve","C-07","41","41","=C7-D7"]
+       ["Item","Bin","Counted","Minimum","Short"],
+       ["Optical smoke detector","A-01","8","6","=C2-D2"],
+       ["Heat detector","A-02","3","4","=C3-D3"],
+       ["Manual call point","A-03","5","4","=C4-D4"],
+       ["Sounder beacon","A-04","2","3","=C5-D5"],
+       ["LED emergency bulkhead, 3-hour","B-01","6","6","=C6-D6"],
+       ["Panel standby batteries (pair)","B-02","2","2","=C7-D7"],
+       ["Fire-rated cable, 100m","C-01","1","1","=C8-D8"]
      ]}
   ],
   "d-prices": [
-    {name:"Q1 2027", widths:{A:220}, fmt:{B:"eur", C:"eur", D:"pct"}, bold:[1],
+    {name:"2027 draft", widths:{A:240}, fmt:{B:"eur", C:"eur", D:"pct"}, bold:[1],
      rows:[
-       ["Item","Trade","Retail","Margin"],
-       ["Combi boiler 30kW","1450","1695","=1-B2/C2"],
-       ["Heat pump 8kW","5200","6150","=1-B3/C3"],
-       ["Radiator 600 x 1200","96.5","129","=1-B4/C4"],
-       ["Thermostatic valve","18.9","26.5","=1-B5/C5"],
-       ["Underfloor manifold, 6 port","310","389","=1-B6/C6"]
+       ["Item","2026","2027","Change"],
+       ["Fire engineer labour, per hour","80","84","=C2/B2-1"],
+       ["Security engineer labour, per hour","80","84","=C3/B3-1"],
+       ["Maintenance technician, per hour","60","62","=C4/B4-1"],
+       ["Installation day, two engineers","1150","1195","=C5/B5-1"],
+       ["Monthly grounds plan","650","680","=C6/B6-1"]
      ]}
   ],
   "d-tpl-costing": [
     {name:"Costing", widths:{A:210}, fmt:{B:"eur", D:"eur"}, bold:[1, 7],
      rows:[
        ["Line","Unit cost","Qty","Total"],
-       ["Materials","0","1","=B2*C2"],
-       ["Labour, hours","55","0","=B3*C3"],
-       ["Hire","0","1","=B4*C4"],
-       ["Waste","0","1","=B5*C5"],
+       ["Equipment","0","1","=B2*C2"],
+       ["Labour, hours","80","0","=B3*C3"],
+       ["Access equipment hire","0","1","=B4*C4"],
+       ["Materials and sundries","0","1","=B5*C5"],
        [],
        ["Job total","","","=SUM(D2:D5)"]
      ]}
   ],
   "b-prices-25": [
-    {name:"2025", widths:{A:220}, fmt:{B:"eur"}, bold:[1],
-     rows:[["Item","Trade"],["Combi boiler 30kW","1390"],["Radiator 600 x 1200","92"]]}
+    {name:"2025", widths:{A:240}, fmt:{B:"eur"}, bold:[1],
+     rows:[["Item","Rate"],["Fire engineer labour, per hour","76"],["Installation day, two engineers","1100"]]}
   ]
 };
 
 /* Trackers and pipelines. who: a key of CANVAS_PEOPLE. value: euro, pipelines only. */
 export const CANVAS_BOARDS = {
-  "d-move": {view:"board",
+  "d-allendale": {view:"board",
     columns:[{id:"todo", name:"Not started"},{id:"doing", name:"In progress"},{id:"done", name:"Done"}],
     cards:[
-      {id:"c1", title:"Decide on the Ballincollig lease", col:"doing", who:"me", due:"Thu", tag:"High"},
-      {id:"c2", title:"Reassign Van 04 jobs to Little Island", col:"doing", who:"tom", due:"Today", tag:"High"},
-      {id:"c3", title:"Count and move counter stock", col:"todo", who:"niamh", due:"5 Dec", tag:"Medium"},
-      {id:"c4", title:"Redirect supplier deliveries", col:"todo", who:"tom", due:"8 Dec", tag:"Medium"},
-      {id:"c5", title:"Tell trade customers about the move", col:"todo", who:"aoife", due:"10 Dec", tag:"Low"},
-      {id:"c6", title:"Back up the counter PC", col:"done", who:"niamh", due:"Done", tag:"Low"},
-      {id:"c7", title:"Get three quotes for removals", col:"done", who:"tom", due:"Done", tag:"Medium"}
+      {id:"c1", title:"Fit the zone interface module", col:"todo", who:"declan", due:"Mon 30 Nov", tag:"High"},
+      {id:"c2", title:"Retest zone 4 and log on the panel", col:"todo", who:"declan", due:"Mon 30 Nov", tag:"High"},
+      {id:"c3", title:"Tell the concierge the zone is back in service", col:"todo", who:"sinead", due:"Mon 30 Nov", tag:"Medium"},
+      {id:"c4", title:"Confirm the part has arrived", col:"doing", who:"sinead", due:"Today", tag:"High"},
+      {id:"c5", title:"Send the completion notice to Gráinne Healy", col:"todo", who:"me", due:"After the visit", tag:"Low"},
+      {id:"c6", title:"Repair the damaged cable run", col:"done", who:"declan", due:"Done", tag:"Medium"},
+      {id:"c7", title:"Isolate zone 4 and brief the concierge", col:"done", who:"declan", due:"Done", tag:"High"}
     ]},
   "d-monthend": {view:"table",
     columns:[{id:"todo", name:"Not started"},{id:"doing", name:"In progress"},{id:"done", name:"Done"}],
     cards:[
-      {id:"m1", title:"Bank reconciliation, all accounts", col:"done", who:"aoife", due:"28 Nov", tag:"High"},
-      {id:"m2", title:"Accruals for November", col:"doing", who:"aoife", due:"28 Nov", tag:"Medium"},
-      {id:"m3", title:"Stock valuation from the Mallow count", col:"doing", who:"niamh", due:"29 Nov", tag:"Medium"},
-      {id:"m4", title:"Xero sync errors cleared", col:"todo", who:"tom", due:"29 Nov", tag:"High"},
-      {id:"m5", title:"Management pack to Martin", col:"todo", who:"aoife", due:"2 Dec", tag:"Medium"}
+      {id:"m1", title:"Approve all November timesheets", col:"doing", who:"sinead", due:"30 Nov", tag:"High"},
+      {id:"m2", title:"Invoice every completed job", col:"doing", who:"me", due:"30 Nov", tag:"High"},
+      {id:"m3", title:"Match supplier invoices to jobs", col:"doing", who:"sinead", due:"1 Dec", tag:"Medium"},
+      {id:"m4", title:"Issue December contract invoices", col:"todo", who:"me", due:"1 Dec", tag:"High"},
+      {id:"m5", title:"Publish the November export for Fiona", col:"todo", who:"sinead", due:"3 Dec", tag:"Medium"}
     ]},
   "d-pipeline": {view:"board",
-    columns:[{id:"new", name:"New"},{id:"quoted", name:"Quoted"},{id:"talks", name:"Negotiating"},{id:"won", name:"Won"}],
+    columns:[{id:"new", name:"New"},{id:"quoted", name:"Quoted"},{id:"talks", name:"Awaiting decision"},{id:"won", name:"Won"}],
     cards:[
-      {id:"p1", title:"Carrigaline Homes", col:"new", who:"me", due:"Intro call Fri", value:18400},
-      {id:"p2", title:"Bandon Heating Services", col:"new", who:"aoife", due:"Waiting on plans", value:9800},
-      {id:"p3", title:"Kinsale Builders", col:"quoted", who:"me", due:"Quote sent 18 Nov", value:12250},
-      {id:"p4", title:"O'Leary Mechanical", col:"quoted", who:"tom", due:"Quote sent 20 Nov", value:6900},
-      {id:"p5", title:"Cobh Developments", col:"talks", who:"me", due:"Pricing call Mon", value:31000},
-      {id:"p6", title:"Ó Riain, Glanmire", col:"won", who:"aoife", due:"Account opened", value:4300}
+      {id:"p1", title:"Rathcoole Community Centre", col:"new", who:"me", due:"Website enquiry", value:1800},
+      {id:"p2", title:"Kinsealy Dental", col:"new", who:"sinead", due:"Website enquiry", value:4200},
+      {id:"p3", title:"Ashbourne Retail Park, LED emergency lighting", col:"quoted", who:"me", due:"Quote sent 15 Nov", value:9880},
+      {id:"p4", title:"Dunboyne Medical Centre, access control", col:"quoted", who:"shane", due:"Quote sent 19 Nov", value:4150},
+      {id:"p5", title:"Boyne Valley Foods, fire alarm replacement", col:"talks", who:"me", due:"Decision due Wed", value:38650},
+      {id:"p6", title:"Celbridge Block B, access control", col:"won", who:"shane", due:"Installing now", value:11840}
     ]}
 };
 
@@ -297,11 +298,11 @@ export const CANVAS_TEMPLATES = [
   {id:"t-tracker", kind:"tracker", title:"Blank tracker", sub:"Table and board views", blank:true},
   {id:"t-pipeline", kind:"pipeline", title:"Blank pipeline", sub:"Stages you drag cards through", blank:true},
   {id:"t-meeting", kind:"page", title:"Meeting notes", sub:"Who was there, decisions, actions", from:"t-meeting"},
-  {id:"t-proposal", kind:"page", title:"Client proposal", sub:"Scope, price, programme, terms", from:"d-tpl-proposal"},
-  {id:"t-survey", kind:"page", title:"Site survey", sub:"Property, readings, recommendation", from:"d-tpl-survey"},
-  {id:"t-costing", kind:"sheet", title:"Job costing", sub:"Materials, labour and a job total", from:"d-tpl-costing"},
-  {id:"t-stock", kind:"sheet", title:"Stock count", sub:"Counted against the system", from:"d-stock"},
+  {id:"t-proposal", kind:"page", title:"Customer proposal", sub:"Scope, price, programme, terms", from:"d-tpl-proposal"},
+  {id:"t-survey", kind:"page", title:"Site survey", sub:"Site, findings, recommendation", from:"d-tpl-survey"},
+  {id:"t-costing", kind:"sheet", title:"Job costing", sub:"Equipment, labour and a job total", from:"d-tpl-costing"},
+  {id:"t-stock", kind:"sheet", title:"Van stock count", sub:"Counted against minimum levels", from:"d-stock"},
   {id:"t-checklist", kind:"tracker", title:"Month-end checklist", sub:"Owners, due dates, status", from:"d-monthend"},
-  {id:"t-sales", kind:"pipeline", title:"Sales pipeline", sub:"New to won, with values", from:"d-pipeline"},
-  {id:"t-onboard", kind:"page", title:"Staff onboarding", sub:"The first week, step by step", from:"d-onboarding"}
+  {id:"t-sales", kind:"pipeline", title:"Installation pipeline", sub:"Enquiry to won, with values", from:"d-pipeline"},
+  {id:"t-onboard", kind:"page", title:"Engineer onboarding", sub:"The first week, step by step", from:"d-onboarding"}
 ];

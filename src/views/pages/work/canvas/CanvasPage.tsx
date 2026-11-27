@@ -38,12 +38,12 @@ const LISTY = new Set<BlockType>(["bullet", "number", "todo"]);
 function heliosText(doc: Doc, blocks: Block[]): string {
   const filled = blocks.filter((b) => b.text.trim());
   if (filled.length < 3) {
-    return "Helios: a first pass at “" + (doc.title || "this page") + "”. Open with why it matters, then who owns it and what has to happen by Friday. Type / and pick To-do list to capture the actions.";
+    return "Charlie AI: a first pass at “" + (doc.title || "this page") + "”. Open with why it matters, then who owns it and what has to happen by Friday. Type / and pick To-do list to capture the actions.";
   }
   const heads = blocks.filter((b) => /^h[123]$/.test(b.type) && b.text.trim()).map((b) => b.text.trim());
   const open = blocks.filter((b) => b.type === "todo" && !b.checked && b.text.trim());
   return (
-    "Helios summary: " + (heads.length ? heads.length + " sections (" + heads.slice(0, 3).join(", ") + "). " : "") +
+    "Charlie AI summary: " + (heads.length ? heads.length + " sections (" + heads.slice(0, 3).join(", ") + "). " : "") +
     (open.length
       ? open.length + " open to-do" + (open.length > 1 ? "s" : "") + ". Next up is “" + open[0].text.trim().replace(/\.$/, "") + "”. Want these as tasks in Work?"
       : "Nothing left open. This one is ready to share.")
@@ -241,7 +241,7 @@ export default function CanvasPage({ doc, blocks, update, onTitle }: Props) {
         />
         <div className="cv-page-tools">
           <button className="ws-btn ws-btn-sm ws-btn-ghost" onClick={draft} disabled={streaming}>
-            <Ico d="sparkle" size={13} /> {streaming ? "Helios is writing" : "Draft with Helios"}
+            <Ico d="sparkle" size={13} /> {streaming ? "Charlie AI is writing" : "Draft with Charlie AI"}
           </button>
           <span className="cv-page-hint">Type <span className="ws-kbd">/</span> for headings, to-dos, callouts</span>
         </div>

@@ -85,10 +85,10 @@ function Paper({ doc, env, page, total, clauses, start }: { doc: M.DocDef; env: 
         <>
           <div className="sg-lh">
             <div>
-              <div className="sg-mark">{doc.org ?? "KILBRIDE GROUP"}</div>
-              {!doc.org && <div className="sg-tag">Plumbing and heating supplies</div>}
+              <div className="sg-mark">{doc.org ?? "DONAGHY FM"}</div>
+              {!doc.org && <div className="sg-tag">Fire, security and property maintenance</div>}
             </div>
-            <div className="sg-addr">{doc.addr ?? "Little Island, Cork"}<br />Ref {doc.ref}</div>
+            <div className="sg-addr">{doc.addr ?? "Maynooth, Co. Kildare"}<br />Ref {doc.ref}</div>
           </div>
           <h3 className="sg-title">{doc.title}</h3>
           <div className="sg-dated">Dated {M.fmtDate(env.sentAt ?? env.editedAt)}</div>

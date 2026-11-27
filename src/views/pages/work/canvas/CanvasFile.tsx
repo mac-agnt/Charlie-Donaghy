@@ -56,14 +56,14 @@ export default function CanvasFile({ doc, path, now, onSign, onCopyLink, onToast
           <div className="cv-paper">
             <div className="cv-paper-meta">{path || "Canvas"}</div>
             <h2>{clean}</h2>
-            {(doc.body || ["This file has been indexed. Its text is searchable from Helios and the command bar."]).map((p, i) => (
+            {(doc.body || ["This file has been indexed. Its text is searchable from Charlie AI and the command bar."]).map((p, i) => (
               <p key={i}>{p}</p>
             ))}
             {signed && (
               <div className="cv-paper-sign">
                 <div>
-                  <span className="cv-script">Martin Kilbride</span>
-                  <small>Martin Kilbride, Kilbride Group</small>
+                  <span className="cv-script">Charlie Donaghy</span>
+                  <small>Charlie Donaghy, Donaghy FM</small>
                 </div>
                 <div className="cv-paper-seal">
                   <Ico d="shield" size={14} /> Signed with Pulse Signatures
